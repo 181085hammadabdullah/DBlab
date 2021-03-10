@@ -1,0 +1,199 @@
+﻿@model String
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg { /* The image used */
+            background-image: url("https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"); /* Full height */
+            height: 100%; /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .nav {
+            margin-bottom: 0 !important;
+            border: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <!--Navbar -->
+    <nav class="mb-1 nav navbar navbar-expand-lg navbar-dark blue lighten-1">
+        <a class="navbar-brand font-weight-bold" data-toggle="modal" href="#myModal">Customer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+                aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" data-toggle="modal" href="#myModal">
+                        Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" data-toggle="modal" href="#myModal">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" data-toggle="modal" href="#myModal">Cart</a>
+                </li>
+                <li class="nav-item  font-weight-bold">
+                    <a class="nav-link" data-toggle="modal" href="#myModal">Your Store</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item  font-weight-bold">
+                    <a  class="btn-outline-white nav-link" href="../Customer/CustReg">SignUp</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/.Navbar -->
+    <div class="bg">
+        <br>
+        <br>
+        <br>
+        <div class="container col-lg-4 col-md-5" style="text-align: center;">
+
+            <form class="form-elegant" method="post" action="../Customer/authenticateSignin"
+                  onsubmit="return signinvalidations()">
+                <div class="card">
+                    <div class="card-body mx-4">
+                        <div class="text-center">
+                            <h3 class="dark-grey-text mb-5"><strong>Customer Login</strong></h3>
+                        </div>
+                        <div class="text-center" style="color: #757575;" action="#!">
+                            <div class="md-form">
+                                <input type="email" name="email" id="email" class="form-control">
+                                <p id="e1" style="color:red"></p>
+                                <label for="Form-email1">Enter email</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="password" name="password" id="password" class="form-control">
+                                <p id="e3" style="color:red"></p>
+                                <label for="Form-pssword">Enter Password</label>
+                            </div>
+
+                            <div class="text-center mb-3">
+                                <input type="submit" value="Sign in" class="btn blue-gradient btn-block btn-rounded z-depth-1a">
+                                <br>
+                               <label class="small" style="color:red">@Model</label>
+                            </div>
+                        </div>
+                        <div class="row my-3 d-flex justify-content-center">
+                            <!--Facebook-->
+                            <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-facebook-f blue-text text-center"></i></button>
+                            <!--Twitter-->
+                            <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-twitter blue-text"></i></button>
+                            <!--Google +-->
+                            <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fab fa-google-plus-g blue-text"></i></button>
+                        </div>
+                        <p>
+                            Not a User?
+                            <a href="../Customer/CustReg" target="_blank">Sign up here</a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+            <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <br>
+                            <div class="thank-you-pop">
+                                <img src="https://img.icons8.com/bubbles/50/000000/close-window.png" />
+                                <p>Please Login first</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function xyz() {
+            $('#myModal').modal('toggle');
+        }
+        function signinvalidations() {
+
+
+            var check = true;
+
+            var errName1 = $("#e1");
+            var errName3 = $("#e3");
+            errName1.addClass('small');
+            errName3.addClass('small');
+
+            var email = document.getElementById("email").value;
+            if (email == "") {
+                document.getElementById("email").style.borderColor = "red";
+                errName1.html("* Email is Required");
+                check = false;
+            }
+            else if (re.test(email) == false) {
+                document.getElementById("email").style.borderColor = "red";
+                errName1.html("* Email Is Incorrect");
+                check = false;
+            }
+            else {
+                errName1.html("");
+                document.getElementById("email").style.borderColor = "green";
+            }
+
+            var password = document.getElementById("password").value;
+            if (password == "") {
+                document.getElementById("password").style.borderColor = "red";
+                errName3.html("* Password is Required");
+                check = false;
+            }
+            else if (password.length < 6) {
+                document.getElementById("password").style.borderColor = "red";
+                errName3.html("* Minimum Length should be 6");
+                check = false;
+            }
+            else {
+                errName3.html("");
+                document.getElementById("password").style.borderColor = "green";
+            }
+
+
+
+
+            if (check == false)
+                return false;
+            else
+                return true;
+
+        }
+    </script>
+</body>
+
+</html>

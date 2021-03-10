@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: poppins;
+        }
+
+        header .carousel-inner .item {
+            height: 100vh;
+        }
+
+        .navbar-inverse {
+            background-color: transparent !important;
+            background: transparent !important;
+            border-color: transparent !important;
+        }
+
+            .navbar-inverse .navbar-brand {
+                color: #fff !important;
+                font-size: 30px;
+                padding: 30px 5px;
+                font-weight: 900;
+            }
+
+        .navbar-right {
+            margin: 11px 0 !important;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: #fff !important;
+            text-transform: uppercase;
+        }
+
+        .banner {
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+
+        .carousel-caption {
+            padding-bottom: 250px !important;
+            font-family: poppins;
+        }
+
+        .affix {
+            padding: 0 !important;
+            background-color: red !important;
+        }
+
+        .main {
+            width: 50%;
+            margin: 50px auto;
+        }
+
+        /* Bootstrap 4 text input with search icon */
+
+        .has-search .form-control {
+            padding-left: 2.375rem;
+        }
+
+        .has-search .form-control-feedback {
+            position: absolute;
+            z-index: 2;
+            display: block;
+            width: 2.375rem;
+            height: 2.375rem;
+            line-height: 2.375rem;
+            text-align: center;
+            pointer-events: none;
+            color: #aaa;
+        }
+
+        #links {
+            font-family: 'Lobster', cursive;
+        }
+
+        #l1:hover {
+            color: gold;
+            text-decoration: underline;
+        }
+
+        .dropbtn {
+            color: white;
+            padding: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+
+
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+
+
+
+<body>
+    <header>
+        <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" id="navbar">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">BuySalePoint.com</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right" id="links">
+                        <li id="l1"><a href="../Home/Index">
+                            <h4>Home</h4>
+                        </a></li>
+                        <li id="l1"><a href="../Home/About">
+                            <h4>About</h4>
+                        </a></li>
+                        <li id="l1"><a href="../Home/Products">
+                            <h4>Products</h4>
+                        </a></li>
+                        <li id="l1">
+                            <div class="dropdown">
+                                <h4 class="dropbtn">Seller Panel</h4>
+                                <div class="dropdown-content">
+                                    <a href="../Seller/Seller_Login">Seller Login</a>
+                                    <a href="../Seller/Seller_Registration">Seller Sign Up</a>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li id="l1">
+                            <div class="dropdown">
+                                <h4 class="dropbtn">Customer Panel</h4>
+                                <div class="dropdown-content">
+                                    <a href="../Customer/CustLogin">Customer Login</a>
+                                    <a href="../Customer/CustReg">Customer Sign Up</a>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="banner" style="background-image: url(https://www.wallpaperup.com/uploads/wallpapers/2015/10/11/818159/d7c22dbf2d8baecc603d04df580e8c7a.jpg);"></div>
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </header>
+    <br>
+    <br>
+    <br>
+
+    <div class="container" style="text-align: center;">
+        <button type="button" class="btn btn-success">
+            <h1>Our Products</h1>
+        </button>
+        <br>
+        <br>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <button type="button" class="btn btn-secondary">
+                <h3>Cars</h3>
+            </button>
+            <br>
+            <br>
+            <br>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="https://cars.usnews.com/static/images/Auto/izmo/i124589149/2020_toyota_corolla_angularfront.jpg" alt="Card image cap"
+                        style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">Corolla Gli</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text to build on the card
+                            title and make up the bulk of the card's content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-6" style="margin-left: 90px;">
+                <div class="card">
+                    <img class="card-img-top" src="https://i.ytimg.com/vi/U17zDef8UTs/maxresdefault.jpg" alt="Card image cap" style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">Honda Civic</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text to build on the card
+                            title and make up the bulk of the card's content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6" style="margin-left: 90px;">
+                <div class="card">
+                    <img class="card-img-top" src="https://static.pakwheels.com/2020/01/a03dc819-ad51-4bbe-90a1-e547e7a16a0a.jpg" alt="Card image cap" style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">Land Crusier</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text the bulk of the card's
+                            content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <button type="button" class="btn btn-secondary">
+                <h3>Laptops</h3>
+            </button>
+            <br>
+            <br>
+            <br>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="https://cdn.pocket-lint.com/r/s/1200x/assets/images/139487-laptops-review-macbook-pro-with-touch-bar-review-13-inch-a-pricey-power-boost-worth-having-image1-agmyhu7lkm.jpg" alt="Card image cap"
+                        style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">Apple</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text to build on the card
+                            title and make up the bulk of the card's content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-6" style="margin-left: 90px;">
+                <div class="card">
+                    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTX4WrJ6ixXpYvWNZAreKyKtEGrnk13axtlXeW4ChpI_30NxMvQ&usqp=CAU" alt="Card image cap" style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">HP</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text to build on the card
+                            title and make up the bulk of the card's content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6" style="margin-left: 90px;">
+                <div class="card">
+                    <img class="card-img-top" src="https://www.windowscentral.com/sites/wpcentral.com/files/styles/mediumplus/public/field/image/2017/01/dell-xps-13-2in1-lid-closed.jpg?itok=SDKVeAjF" alt="Card image cap" style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">DELL</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text the bulk of the card's
+                            content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <button type="button" class="btn btn-secondary">
+                <h3>Dresses</h3>
+            </button>
+            <br>
+            <br>
+            <br>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/710o0VupScL._AC_UL1500_.jpg" alt="Card image cap"
+                        style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">T-Shirts</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text to build on the card
+                            title and make up the bulk of the card's content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-6" style="margin-left: 90px;">
+                <div class="card">
+                    <img class="card-img-top" src="https://cdn11.bigcommerce.com/s-q9ptxvukwz/images/stencil/650x800/products/10766/85193/lapg-shrike-tactical-pant__93574.1574435448.jpg?c=2" alt="Card image cap" style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">Pants</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text to build on the card
+                            title and make up the bulk of the card's content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6" style="margin-left: 90px;">
+                <div class="card">
+                    <img class="card-img-top" src="https://i.pinimg.com/originals/ff/06/63/ff066321e39f60ee524573bd7859d652.jpg" alt="Card image cap" style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">Baby Dresses</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text the bulk of the card's
+                            content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <button type="button" class="btn btn-secondary">
+                <h3>Camera and DSLR</h3>
+            </button>
+            <br>
+            <br>
+            <br>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src="https://hashmiphotos.com/wp-content/uploads/2018/12/1536134759000_1433711.jpg" alt="Card image cap"
+                        style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">Canon</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text to build on the card
+                            title and make up the bulk of the card's content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-6" style="margin-left: 90px;">
+                <div class="card">
+                    <img class="card-img-top" src="https://hashmiphotos.com/wp-content/uploads/2018/11/1519695934000_1394219.jpg" alt="Card image cap" style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">SONY</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text to build on the card
+                            title and make up the bulk of the card's content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6" style="margin-left: 90px;">
+                <div class="card">
+                    <img class="card-img-top" src="https://hashmiphotos.com/wp-content/uploads/2014/02/1010025.jpg" alt="Card image cap" style="height: 350px; width: 350px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="margin-left: 75px;">NIKKON</h3>
+                        <p class="card-text" style="margin-left: 90px;">
+                            Some quick example text the bulk of the card's
+                            content.
+                        </p>
+                        <a href="#" class="btn btn-primary" style="margin-left: 75px;">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+        crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <script>
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > 50) {
+                $('.navbar').addClass('affix');
+
+            } else {
+                $('.navbar').removeClass('affix');
+            }
+        });
+    </script>
+</body>
+
+</html>

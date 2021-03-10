@@ -1,0 +1,297 @@
+﻿@using Final_App.Models;
+@model CurrentUser
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body, html {
+            height: 120%;
+            margin: 0%;
+        }
+
+        .nav {
+            margin-bottom: 0 !important;
+            border: 0 !important;
+        }
+
+        .f {
+            background-color: transparent;
+        }
+
+        .bg { /* The image used */
+            background-image: url("https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"); /* Full height */
+            height: 100%; /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <!--Navbar -->
+    <nav class="mb-1 nav navbar navbar-expand-lg navbar-dark blue lighten-1">
+        <a class="navbar-brand font-weight-bold" href="../Customer/CustHome">Customer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+            aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="../Customer/CustHome">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link font-weight-bold" href="../Customer/CustProfile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="../Customer/AddToCart">Cart</a>
+                </li>
+                <li class="nav-item font-weight-bold">
+                    <a class="nav-link" href="../Customer/CustStore">Your Store</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item avatar dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user fa-2x"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+                         aria-labelledby="navbarDropdownMenuLink-55">
+                        <a style="background-color: lightgray;margin:0;" class="text-center dropdown-item" href="../Customer/CustLogin">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/.Navbar -->
+    <div class="bg">
+        <br>
+        <div class="container">
+            <div class="row my-2">
+                <div class="col-lg-8 order-lg-2">
+                    <ul class="nav nav-tabs ">
+                        <li class="nav-item f">
+                            <a href="" data-target="#profile" style="color:white" data-toggle="tab" class="font-weight-bold nav-link active blue">Profile</a>
+                        </li>
+                        &nbsp;
+                        <li class="nav-item">
+                            <a href="" data-target="#messages" style="color:white" data-toggle="tab" class="font-weight-bold nav-link blue">Notifications</a>
+                        </li>
+                        &nbsp;
+                        <li class="nav-item">
+                            <a href="" data-target="#edit" style="color:white" data-toggle="tab" class="font-weight-bold nav-link blue">Other info</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content py-4">
+                        <div class="tab-pane active f" id="profile">
+                            <h5 class="font-weight-bold mb-3">@Model.Fname&nbsp;@Model.Lname</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="font-weight-bold">About</h6>
+                                    <p>
+                                        Web Designer, UI/UX Engineer
+                                    </p>
+                                    <h6 class="font-weight-bold">Hobbies</h6>
+                                    <p>
+                                        Indie music, skiing and hiking. I love the great outdoors.
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Recent badges</h6>
+                                    <a href="#" class="badge badge-dark badge-pill">html5</a>
+                                    <a href="#" class="badge badge-dark badge-pill">react</a>
+                                    <a href="#" class="badge badge-dark badge-pill">codeply</a>
+                                    <a href="#" class="badge badge-dark badge-pill">angularjs</a>
+                                    <a href="#" class="badge badge-dark badge-pill">css3</a>
+                                    <a href="#" class="badge badge-dark badge-pill">jquery</a>
+                                    <a href="#" class="badge badge-dark badge-pill">bootstrap</a>
+                                    <a href="#" class="badge badge-dark badge-pill">responsive-design</a>
+                                    <hr>
+                                    <span class="badge badge-primary"><i class="fa fa-user"></i> 900 Followers</span>
+                                    <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
+                                    <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5 class="font-weight-bold mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
+                                    <table class="table table-sm table-hover table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!--/row-->
+                        </div>
+                        <div class="tab-pane f" id="messages">
+                            <div class="container">
+                                <br><br><br>
+                                <h3 style="background-color:transparent;" class="card-header text-center font-weight-bold text-uppercase py-4">No Messages here </h3>
+                            </div>
+                        </div>
+                        <div class="tab-pane f" id="edit">
+                            <form role="form" method="post" action="../Customer/updateCusProfile" onsubmit="func();">
+                                <div class="form-group row">
+                                    <label class="font-weight-bold col-lg-3 col-form-label form-control-label">First name</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" id="FName" name="FName" type="text" value=@Model.Fname>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="font-weight-bold col-lg-3 col-form-label form-control-label">Last name</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" id="LName" name="LName" type="text" value=@Model.Lname>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="font-weight-bold col-lg-3 col-form-label form-control-label">Gender</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" id="gender" name="gender" type="text" value=@Model.gender readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="font-weight-bold col-lg-3 col-form-label form-control-label">Email</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" name="Email" id="Email" type="email" value=@Model.email readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="font-weight-bold col-lg-3 col-form-label form-control-label">Address</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" id="address" name="address" value=@Model.address placeholder="Street">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="font-weight-bold col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-6">
+                                        <input class="form-control" type="text" name="city" id="city" value=@Model.city placeholder="City">
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <input class="form-control" type="text" id="zipcode" name="zipcode" value=@Model.zipcode placeholder="ZipCode">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="font-weight-bold col-lg-3 col-form-label form-control-label">Time Zone</label>
+                                    <div class="col-lg-9">
+                                        <select id="user_time_zone" class="form-control">
+                                            <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                                            <option value="Alaska">(GMT-09:00) Alaska</option>
+                                            <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                                            <option value="Arizona">(GMT-07:00) Arizona</option>
+                                            <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                                            <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                                            <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                                            <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="font-weight-bold col-lg-3 col-form-label form-control-label">Username</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" value=@Model.Fname readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="font-weight-bold col-lg-3 col-form-label form-control-label">Password</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" id="password1" name="password1" type="password" value=@Model.password>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="font-weight-bold col-lg-3 col-form-label form-control-label">Confirm password</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" id="password2" name="password2" type="password" value=@Model.password>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="submit" data-toggle="modal" value="Save Changes" class="btn btn-primary btn-lg font-weight-bold">
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="myModal" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body text-center">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <br>
+                                            <div class="thank-you-pop">
+                                                <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" height="35" alt="">
+                                                <p>All changes have been saved, redirecting....</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 order-lg-1 text-center">
+                    <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+                    <h6 class="mt-2">Upload a different photo</h6>
+                    <label class="custom-file">
+                        <input type="file" id="file" class="custom-file-input">
+                        <span class="btn btn-primary custom-file-control font-weight-bold">Choose file</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <script>
+            function func() {
+                $('#myModal').modal('toggle');
+            }
+        </script>
+    </div>
+</body>
+</html>
+
+<!--Navbar -->

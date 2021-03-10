@@ -1,0 +1,240 @@
+﻿@using Final_App.Models
+@model  Cart_Entries_With_Payments
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg { /* The image used */
+            background-image: url("https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"); /* Full height */
+            height: 100%; /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+
+
+</head>
+<body onload="xyz();">
+    <!--Navbar -->
+    <div class="bg">
+        <nav class="mb-1 nav navbar navbar-expand-lg navbar-dark blue lighten-1">
+            <a class="navbar-brand font-weight-bold" href="../Customer/CustHome">Customer</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+                aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="../Customer/CustHome">Home
+                        <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="../Customer/CustProfile">Profile</a>
+                    </li>
+                    <li class="nav-item  active">
+                        <a class="nav-link font-weight-bold" href="../Customer/AddToCart">Cart</a>
+                    </li>
+                    <li class="nav-item font-weight-bold">
+                        <a class="nav-link" href="../Customer/CustStore">Your Store</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item avatar dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user fa-2x"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+                            aria-labelledby="navbarDropdownMenuLink-55">
+                            <a style="background-color: lightgray; margin: 0;" class="text-center dropdown-item" href="../Customer/CustLogin">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--/.Navbar -->
+        <div class="container">
+            <form>
+                <table id="cart" class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th class="font-weight-bold" style="width: 50%">Product</th>
+                            <th class="font-weight-bold" style="width: 10%">Price(RS)</th>
+                            <th class="font-weight-bold" style="width: 8%">Quantity</th>
+                            <th class="font-weight-bold text-center" style="width: 22%">Subtotal</th>
+                            <th class="font-weight-bold" style="width: 10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Cart_Entries c in Model.Cart_Products)
+                        {
+                            
+                            <tr>
+                                <td data-th="Product">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <h4 class="nomargin font-weight-bold">@c.Product_Name</h4>
+                                            <p>@c.Description</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-th="Price" class="font-weight-bold" value="@c.Unit_price" id="price">@c.Unit_price </td>
+                                <td data-th="Quantity">
+                                    <input type="number" id=@c.Product_id name="quant" onclick="update_quant(this,@c.Product_id,@c.Unit_price,@c.id);" class="form-control text-center" value=@c.quantity min="1" max=@c.MAX_Quantity>
+                                </td>
+
+                                <td data-th="Subtotal" class="text-center font-weight-bold" id="@c.id" value="0">
+                                    @c.total
+                                </td>
+                                <td class="actions" data-th="">
+                                    <a onclick="info(this,@c.Product_id);window.location.reload();" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><a style="color: white" data-toggle="modal" href="#myModal" class="btn blue font-weight-bold"><i class="fa fa-angle-left"></i>Checkout</a></td>
+                            <td colspan="1" class="hidden-xs"></td>
+                            <td class="hidden-xs font-weight-bold" style="text-align: right">Total:</td>
+                            <td class="hidden-xs font-weight-bold text-center" id="gt"></td>
+                            <td><a href="../Customer/CustStore" style="color: white;" class="btn blue font-weight-bold">Store<i style="display: inline;" class="fa fa-angle-right"></i></a></td>
+
+                        </tr>
+                    </tfoot>
+                </table>
+            </form>
+            <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <br>
+                            <div class="thank-you-pop">
+                                <h5 class="text-center font-weight-bold"><b>Please, select a payment method</b></h5>
+
+                                <select class="font-weight-bold browser-default custom-select mb-4" id="select" name="select">
+                                    <option value="" class="font-weight-bold" disabled="" selected="">Choose a payment method</option>
+                                    @foreach (Payment v in Model.payments)
+                                    {
+                                        <option selected name="Payment_Method_id" id="Payment_Method_id" value=@v.P_id>@v.Name</option>
+                                    }
+                                </select>
+                                <a style="color: white;" class="btn blue btn-ok" onclick="info2(this);window.location.reload();">Proceed</a>
+                                <a style="color: white;" class="btn btn-default" data-dismiss="modal">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+           
+            function abc()
+            {
+                $('#myModal').modal('toggle');
+            }
+            function xyz()
+            {
+                var grand = 0;
+                var i = -1;
+                while (document.getElementById(i)) {
+                    grand = grand + parseInt(document.getElementById(i).innerHTML);
+                    i--;
+                }
+                document.getElementById("gt").innerHTML = grand;
+            }
+            function update_quant(elmnt, id, pr, cid) {
+                
+                var grand = 0;
+                var x = document.getElementById(id).value;
+                document.getElementById(cid).innerHTML = x * pr;
+                var i = -1;
+                while (i!=-50)
+                {
+                    if (document.getElementById(i)) {
+                        grand = grand + parseInt(document.getElementById(i).innerHTML);
+                        i--;
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                    
+                }
+                document.getElementById("gt").innerHTML = grand;
+                $.ajax(
+                    {
+                        type: "POST", //HTTP POST Method
+                        url: "../Customer/Update_Quantity", // Controller/View
+
+                        data:
+                        {
+                            quantity: x,
+                            ID: id
+                        }
+                    });
+            }
+            function info(elmnt, id) {
+                $.ajax(
+                    {
+                        type: "POST", //HTTP POST Method
+                        url: "../Customer/exclude_cart_item", // Controller/View
+
+                        data:
+                        {
+                            ID: id
+                        }
+                    });
+            }
+            function info2(elmnt) {
+                var x = document.getElementById("select").value;
+                $.ajax(
+                    {
+                        type: "POST", //HTTP POST Method
+                        url: "../Customer/Cart_to_Invoice", // Controller/View
+
+                        data:
+                        {
+                            ID: x
+                        }
+                    });
+            }
+        </script>
+    </div>
+</body>
+</html>
+

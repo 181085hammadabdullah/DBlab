@@ -1,0 +1,178 @@
+﻿@model string
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+
+</head>
+<body>
+    <!--Navbar-->
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container col-lg-4 col-md-5" style="text-align: center;">
+
+
+
+        <!-- Grid row -->
+        <!--Form without header-->
+        <div class="card">
+
+            <div class="card-body mx-4">
+
+                <!--Header-->
+                <div class="text-center">
+                    <h3 class="dark-grey-text mb-5"><strong>Seller Registartion</strong></h3>
+                </div>
+
+                <!--Body-->
+                <form class="text-center" style="color: #757575;" onsubmit="return LoginvalidateForm()" action="../Seller/Authenticate_Seller_Signup" method="post">
+
+                    <div class="md-form">
+                        <input type="text" name="name" id="name" class="form-control">
+                        <label for="name">Name</label>
+                    </div>
+                    <p id="e3"></p>
+                    <div class="md-form">
+                        <input type="email" name="email" id="email" class="form-control">
+                        <label for="email">Email</label>
+                    </div>
+                    <p id="e1"></p>
+                    <div class="md-form">
+                        <input type="password" name="password" id="password" class="form-control">
+                        <label for="password">Password</label>
+                    </div>
+                    <p id="e2"></p>
+                    <div class="container" style="display:none">
+
+                        <label class="radio-inline">
+                            <input type="radio" id="gender" name="gender" value="Male" checked>Male
+                        </label>
+                        &nbsp;&nbsp;
+                            <label class="radio-inline">
+                                <input type="radio" id="gender" value="Female" name="gender">Female
+                            </label>
+                    </div>
+
+                    <!-- Sign up button -->
+                    <div class="text-center mb-3">
+                        <input type="submit" value="Register" class="btn blue-gradient btn-block btn-rounded z-depth-1a">
+                        &nbsp;&nbsp;&nbsp;
+                        <br>
+                        <label class="small" style="color:red">@Model</label>
+                    </div>
+                </form>
+
+                <p>or sign up with</p>
+
+                <div class="row my-3 d-flex justify-content-center">
+                    <!--Facebook-->
+                    <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-facebook-f blue-text text-center"></i></button>
+                    <!--Twitter-->
+                    <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-twitter blue-text"></i></button>
+                    <!--Google +-->
+                    <button type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fab fa-google-plus-g blue-text"></i></button>
+                </div>
+
+                <p>
+                    Already a Seller?
+                        <a href="../Seller/Seller_Login" target="_blank">Click here to Sign in</a>
+                </p>
+
+                <!--Footer-->
+                <!--/Form without header-->
+
+            </div>
+            <!-- Grid column -->
+            <!-- Grid row -->
+
+        </div>
+
+    </div>
+    <script>
+
+        function LoginvalidateForm() {
+            var check = true;
+            var re = /^(([^<>()\[\]\\.,;:\s"]+(\.[^<>()\[\]\\.,;:\s"]+)*)|(".+"))((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var name = document.getElementById('name').value;
+            var errName1 = $("#e1");
+            var errName2 = $("#e2");
+            var errName3 = $("#e3");
+            errName1.addClass('small');
+            errName2.addClass('small');
+            errName3.addClass('small');
+            $("#e1").css("color", "red");
+            $("#e2").css("color", "red");
+            $("#e3").css("color", "red");
+            if (email == "") {
+                document.getElementById("email").style.borderColor = "red";
+                errName1.html("* Email Required");
+                check = false;
+            }
+            else if (re.test(email) == false) {
+                document.getElementById("email").style.borderColor = "red";
+                errName1.html("* Invalid Email");
+                check = false;
+            }
+            else {
+                errName1.html("");
+                document.getElementById("email").style.borderColor = "green";
+            }
+            if (password == "") {
+                document.getElementById("password").style.borderColor = "red";
+                errName2.html("* Password Required");
+                check = false;
+            }
+            else if (password.length < 6) {
+                document.getElementById("password").style.borderColor = "red";
+                errName2.html("* Password Must have minimum 6 Characters");
+                check = false;
+            }
+            else {
+                errName2.html("");
+                document.getElementById("password").style.borderColor = "green";
+            }
+            if (name == "") {
+                document.getElementById("name").style.borderColor = "red";
+                errName3.html("* Name Required");
+                check = false;
+            }
+            else if (name.length < 3) {
+                document.getElementById("name").style.borderColor = "red";
+                errName3.html("* Name Must have minimum 3 Characters");
+                check = false;
+            }
+            else {
+                errName3.html("");
+                document.getElementById("name").style.borderColor = "green";
+            }
+            if (check == false)
+                return false;
+            else
+                return true;
+
+        }
+    </script>
+</body>
+</html>

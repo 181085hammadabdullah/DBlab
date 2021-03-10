@@ -1,0 +1,220 @@
+﻿@using Final_App.Models;
+@model Store_With_Categories
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body, html {
+            height: auto;
+            margin: 0%;
+        }
+        .nav {
+            margin-bottom: 0 !important;
+            border: 0 !important;
+        }
+        .f
+        {
+            background-color:transparent;
+        }
+    .bg { /* The image used */ 
+          background-image: url("https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"); 
+          /* Full height */ height: 100%; 
+          /* Center and scale the image nicely */ 
+          background-position: center; 
+          background-repeat: no-repeat; 
+          background-size: cover;
+          background-attachment:fixed;
+    }
+    </style>
+</head>
+<body>
+    <!--Navbar -->
+     <nav class="mb-1 nav navbar navbar-expand-lg navbar-dark blue lighten-1">
+        <a class="navbar-brand font-weight-bold" href="../Customer/CustHome">Customer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+            aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="../Customer/CustHome">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="../Customer/CustProfile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="../Customer/AddToCart">Cart</a>
+                </li>
+                <li class="nav-item active font-weight-bold">
+                    <a class="nav-link" href="../Customer/CustStore">Your Store</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item avatar dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user fa-2x"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+                         aria-labelledby="navbarDropdownMenuLink-55">
+                        <a style="background-color: lightgray;margin:0;" class="text-center dropdown-item" href="../Customer/CustLogin">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/.Navbar -->
+
+    <div class="bg">
+        <br>
+        <div class="card " style="text-align:center;margin:2%">
+            <h3 style="color:white;text-align:left;" class="card-header blue font-weight-bold text-uppercase py-4">Filter your search</h3>
+            <form class="text-center" style="color: #757575;" action="../Customer/Filter_Category" method="post">
+
+                <div class="form-row " style="margin:2%">
+                    <div class="col">
+                        <br>
+                        <select class="font-weight-bold browser-default custom-select mb-4" id="select" name="select">
+                            <option value="" class="font-weight-bold" disabled="" selected="">Choose Category</option>
+                             @foreach (Category p in Model.Categories)
+                                {
+                                    <option value="@p.Name">@p.Name</option>
+                                } 
+                        </select>
+                    </div>
+                    <div class="col">
+                        <!-- First name -->
+                        <div class="md-form">
+                            <input type="text"  id="upper" name="upper" class="font-weight-bold form-control">
+                            <label for="upper"  class="font-weight-bold">UpperPrice/optional</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- Last name -->
+                        <div class="md-form">
+                            <input type="text" id="lower" name="lower" class="font-weight-bold form-control">
+                            <label for="lower" class="font-weight-bold">Lower Price/optional</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- First name -->
+                        <div class="md-form">
+                            <input type="text" id="p_name" name="p_name" class="font-weight-bold form-control">
+                            <label for="p_name" class="font-weight-bold">Name/optional</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- Last name -->
+                        <div class="md-form">
+                            <input type="text" id="p_location" name="p_location" class="font-weight-bold form-control">
+                            <label for="p_location" class="font-weight-bold">Location/optional</label>
+                        </div>
+                    </div>
+                </div>
+                <input style="color:white;" class="font-weight-bold blue btn font-weight-bold" value="Search" type="submit"><lable></lable>
+
+            </form>
+            <br>
+        </div>
+        <br><br>
+        <div class="container " style="text-align:center;">
+            <div class="card ">
+                <h3 style="color:white;text-align:left;" class="card-header blue f font-weight-bold text-uppercase py-4">Products</h3>
+                <div class="card-body">
+                    <div id="table" class="table-editable ">
+                        <table class=" table table-bordered font-weight-bold table-responsive-md table-striped text-center" style="color:black;">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"><b>Serial #</b></th>
+                                    <th class="text-center"><b>Name</b></th>
+                                    <th class="text-center"><b>Stock</b></th>
+                                    <th class="text-center"><b>Price(RS)</b></th>
+                                    <th class="text-center"><b>City</b></th>
+                                    <th class="text-center"><b>Action</b></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Store p in Model.Store_Products)
+                                {
+                                    <tr>
+                                        <td id="1" value=@p.ProductID class="font-weight-bold pt-3-half" contenteditable="true">@p.auto</td>
+                                        <td id="2" value=@p.Product_Name class="font-weight-bold pt-3-half" contenteditable="true">@p.Product_Name</td>
+                                        <td id="3" value=@p.Stock class="font-weight-bold pt-3-half" contenteditable="true">@p.Stock</td>
+                                        <td id="4" value=@p.Unit_price class="font-weight-bold pt-3-half" contenteditable="true">@p.Unit_price</td>
+                                        <td id="5" value=@p.City class="font-weight-bold pt-3-half" contenteditable="true">@p.City</td>
+                                        <td>
+                                            <span class="table-remove">
+                                                <a data-toggle="modal" class="btn btn-danger btn-rounded btn-sm my-0" href="#myModal" id="theme" onclick="get_product(this,@p.ProductID)">
+                                                    Add To cart
+                                                </a>
+                                            </span>
+                                            <div id="myModal" class="modal fade">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body text-center">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            <br>
+                                                            <div class="thank-you-pop">
+                                                                <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" height="35" alt="">
+                                                                <p>Item have been added to cart</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <p id="demo"></p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>
+            function get_product(elmnt, id) {
+                $.ajax(
+                    {
+                        type: "POST", //HTTP POST Method
+                        url: "../Customer/AddtoCart", // Controller/View
+
+                        data:
+                        {
+                            ID: id
+                        }
+                    });
+            }
+        </script>
+        <br><br>
+    </div>
+</body>
+</html>
+

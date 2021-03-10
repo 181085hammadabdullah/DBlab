@@ -1,0 +1,167 @@
+﻿@model  String
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    <!--Navbar -->
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange sticky-top lighten-1">
+        <a class="navbar-brand" href="#">Admin Module</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+            aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../Admin/AdminHome">Home
+          <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Admin/AdminProfile">Profile</a>
+                </li>
+                
+
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-google-plus-g"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                        aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="../Admin/Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/.Navbar -->
+    <div class="container col-lg-4 col-md-4" style="text-align: center">
+        <button type="button" class="btn btn-danger">
+
+            <h2><b>Add New Payment Method</b></h2>
+        </button>
+        <!-- Material form subscription -->
+        <div class="card">
+
+            <h5 class="card-header info-color white-text text-center py-4">
+                <strong>Payment Method</strong>
+            </h5>
+
+            <!--Card content-->
+            <div class="card-body px-lg-5">
+
+                <!-- Form -->
+                <form class="text-center" onsubmit="return FormValidation()" style="color: #757575;" method="post" action="../Admin/Add_New_Payments">
+
+                    <!-- Name -->
+                    <div class="md-form mt-3">
+                        <input type="text" id="Name" name="Name" class="form-control">
+                        <label for="Name">Name</label>
+                    </div>
+                    <p id="e1"></p>
+                    <!-- E-mai -->
+                    <div class="md-form">
+                        <textarea id="form7" class="md-textarea form-control" name="description" rows="3"></textarea>
+                        <label for="form7">Description</label>
+                    </div>
+                    <p id="e2"></p>
+                    <!-- Sign in button -->
+                    <input type="submit" value="Add New Payment" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0">
+                    <br>
+                        <label class="small" style="color:red">@Model</label>
+
+                </form>
+                <!-- Form -->
+
+            </div>
+
+        </div>
+        <!-- Material form subscription -->
+    </div>
+    <script>
+
+        function FormValidation() {
+
+            var check = true;
+            var name = document.getElementById('Name').value;
+            var desc = document.getElementById('form7').value;
+            var errName1 = $("#e1");
+            var errName2 = $("#e2");
+            errName1.addClass('small');
+            errName2.addClass('small');
+            $("#e1").css("color", "red");
+            $("#e2").css("color", "red");
+            if (name == "") {
+                document.getElementById("Name").style.borderColor = "red";
+                errName1.html("* Category Name Required");
+                check = false;
+
+            }
+            else if (name.length < 3) {
+                document.getElementById("Name").style.borderColor = "red";
+                errName1.html("* Min 3 Characters");
+                check = false;
+            }
+            else {
+                errName1.html("");
+                document.getElementById("Name").style.borderColor = "green";
+            }
+
+            if (desc == "") {
+                document.getElementById("form7").style.borderColor = "red";
+                errName2.html("* Category Description Required");
+                check = false;
+
+            }
+            else {
+                errName2.html("");
+                document.getElementById("form7").style.borderColor = "green";
+            }
+            if (check == true)
+                return true;
+            else
+                return false;
+        }
+    </script>
+</body>
+</html>
+

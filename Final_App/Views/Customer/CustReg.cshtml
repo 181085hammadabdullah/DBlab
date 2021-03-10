@@ -1,0 +1,308 @@
+﻿@model String
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body, html {
+            height: 120%;
+            margin: 0;
+        }
+
+        .bg { /* The image used */
+            background-image: url("https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"); /* Full height */
+            height: 100%; /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment:fixed;
+        }
+
+        .nav {
+            margin-bottom: 0 !important;
+            border: 0 !important;
+        }
+    </style>
+</head>
+<!-- Default form register -->
+<body>
+    <!--Navbar -->
+    <nav class="mb-1 nav navbar navbar-expand-lg navbar-dark blue lighten-1">
+        <a class="navbar-brand font-weight-bold" data-toggle="modal" href="#myModal">Customer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+                aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" data-toggle="modal" href="#myModal">
+                        Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" data-toggle="modal" href="#myModal">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" data-toggle="modal" href="#myModal">Cart</a>
+                </li>
+                <li class="nav-item  font-weight-bold">
+                    <a class="nav-link" data-toggle="modal" href="#myModal">Your Store</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item  font-weight-bold">
+                    <a class="nav-link btn-outline-white" href="../Customer/CustLogin">LogIn</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/.Navbar -->
+    <div class="bg">
+        <br><br><br><br>
+        <div class="container col-lg-5 col-md-5" style="text-align:center; ">
+
+            <form class="form-elegant" action="../Customer/authenticateSignup" method="post"
+            onsubmit="return checkforvalidations()">
+
+                <!-- Grid row -->
+                <!--Form without header-->
+                <div class="card">
+
+                    <div  class="card-body mx-4" >
+
+                        <!--Header-->
+                        <div class="text-center">
+                            <h3 class="dark-grey-text mb-5"><strong>Customer Registration</strong></h3>
+                        </div>
+
+                        <!--Body-->
+                        <div class="form-row mb-4">
+                            <div class="col">
+                                <!-- First name -->
+                                <input type="text" name="FName" id="Fname" class="form-control" placeholder="First name">
+                                 <p id="e5" style="color:red"></p>
+                            </div>
+                            <div class="col">
+                                <!-- Last name -->
+                                <input type="text" name="LName" id="Lname" class="form-control" placeholder="Last name">
+                                <p id="e6" style="color:red"></p>
+                            </div>
+                        </div>
+
+                        <!-- E-mail -->
+                        <input type="email" name="email" id="email" class="form-control mb-4" placeholder="E-mail">
+                         <p id="e1" style="color:red"></p>
+                        <!-- Phone number -->
+                        <input type="text" name="Phone" id="Phone" class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                         <p id="e2" style="color:red"></p>
+                        <br>
+                        <!-- Password -->
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                       <p id="e3" style="color:red"></p>
+                        <br>
+                        <div class="container">
+
+                            <label class="radio-inline">
+                                <input type="radio" id="gender" name="gender" value="Male" checked>Male
+                            </label>
+                            &nbsp;&nbsp;
+                            <label class="radio-inline">
+                                <input type="radio" id="gender" value="Female" name="gender">Female
+                            </label>
+                        </div>
+                        <!-- Newsletter -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
+                            <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
+                        </div>
+                        <br>
+                        <!-- Sign up button -->
+                        <div class="text-center mb-3">
+                            <input type="submit" value="Register" class="btn blue-gradient btn-block btn-rounded z-depth-1a">
+                            <br>
+                            &nbsp;&nbsp;&nbsp; <label class="small" style="color:red">@Model</label>
+                        </div>
+
+                        <!-- Social register -->
+                        <p>or sign up with:</p>
+
+                        <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
+                        <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
+                        <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
+                        <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+
+                        <hr>
+
+                      
+
+                        <!-- Terms of service -->
+                        <p>
+                            Already a User?
+                            <a href="../Customer/CustLogin" target="_blank">Click here to sign in</a>
+                        </p>
+
+                    </div>
+                </div>
+            </form>
+              
+            <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <br>
+                            <div class="thank-you-pop">
+                                <img src="https://img.icons8.com/bubbles/50/000000/close-window.png" />
+                                <p>Please SignUp first</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+        <script>
+            function xyz() {
+                $('#myModal').modal('toggle');
+            }
+            function checkforvalidations() {
+
+                var check = true;
+                var re = /^(([^<>()\[\]\\.,;:\s"]+(\.[^<>()\[\]\\.,;:\s"]+)*)|(".+"))((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                var password = document.getElementById("password").value;
+                var Phone = document.getElementById("Phone").value;
+                var Lname = document.getElementById("Lname").value;
+                var Fname = document.getElementById("Fname").value;
+                var email = document.getElementById("email").value;
+                var errName1 = $("#e1");
+                var errName2 = $("#e2");
+                var errName3 = $("#e3");
+                var errName5 = $("#e5");
+                var errName6 = $("#e6");
+                errName1.addClass('small');
+                errName2.addClass('small');
+                errName3.addClass('small');
+                errName5.addClass('small');
+                errName6.addClass('small');
+                $("#e1").css("color", "red");
+                $("#e2").css("color", "red");
+                $("#e3").css("color", "red");
+                $("#e5").css("color", "red");
+                $("#e6").css("color", "red");
+
+
+                if (Lname == "") {
+                    document.getElementById("Lname").style.borderColor = "red";
+                    errName6.html("* Last Name is Required");
+                    check = false;
+                }
+                else if (Lname.length < 3) {
+                    document.getElementById("Lname").style.borderColor = "red";
+                    errName6.html("* Minimum Name Length should be 3");
+                    check = false;
+                }
+                else {
+                    errName6.html("");
+                    document.getElementById("Lname").style.borderColor = "green";
+                }
+
+
+
+                if (Fname == "") {
+                    document.getElementById("Fname").style.borderColor = "red";
+                    errName5.html("* First Name is Required ");
+                    check = false;
+                }
+                else if (Fname.length < 3) {
+                    document.getElementById("Fname").style.borderColor = "red";
+                    errName5.html("* Minimum Name Length should be 3");
+                    check = false;
+                }
+                else {
+                    errName5.html("");
+                    document.getElementById("Fname").style.borderColor = "green";
+                }
+
+                if (email == "") {
+                    document.getElementById("email").style.borderColor = "red";
+                    errName1.html("* Email is Required");
+                    check = false;
+                }
+                else if (re.test(email) == false) {
+                    document.getElementById("email").style.borderColor = "red";
+                    errName1.html("* Email Is Incorrect");
+                    check = false;
+                }
+                else {
+                    errName1.html("");
+                    document.getElementById("email").style.borderColor = "green";
+                }
+
+
+
+                if (Phone == "") {
+
+                    document.getElementById("Phone").style.borderColor = "red";
+                    errName2.html("* Phone is Required");
+                    check = false;
+                }
+                else if (Phone.length != 11) {
+                    document.getElementById("Phone").style.borderColor = "red";
+                    errName2.html("* Phone No Has Must 11 Charcters");
+                    check = false;
+                }
+                else {
+                    errName2.html("");
+                    document.getElementById("Phone").style.borderColor = "green";
+                }
+
+
+                if (password == "") {
+                    document.getElementById("password").style.borderColor = "red";
+                    errName3.html("* Password Is Required");
+                    check = false;
+                }
+                else if (password.length < 6) {
+                    document.getElementById("password").style.borderColor = "red";
+                    errName3.html("* Minimum Length should be 6");
+                    check = false;
+                }
+                else {
+                    errName3.html("");
+                    document.getElementById("password").style.borderColor = "green";
+                }
+
+
+
+                if (check == false)
+                    return false;
+                else
+                    return true;
+
+            }
+
+
+        </script>
+    </div>
+</body>
+</html>

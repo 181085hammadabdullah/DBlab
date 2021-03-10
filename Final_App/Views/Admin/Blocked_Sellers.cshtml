@@ -1,0 +1,134 @@
+﻿@using Final_App.Models
+@model List<Blocked_Seller>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    <!--Navbar -->
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange sticky-top lighten-1">
+        <a class="navbar-brand" href="#">Admin Module</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+            aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../Admin/AdminHome">Home
+          <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Admin/AdminProfile">Profile</a>
+                </li>
+                
+
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-google-plus-g"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                        aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="../Admin/Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/.Navbar -->
+    <div class="container" style="text-align: center">
+        <button type="button" class="btn btn-danger">
+
+            <h2><b>Blocked Sellers</b></h2>
+        </button>
+
+        <!-- Editable table -->
+        <div class="card">
+            <h3 style="background-color:#02A4D3" class="card-header text-center font-weight-bold text-uppercase py-4">Blocked Seller Accounts</h3>
+            <div class="card-body">
+                <div id="table" class="table-editable">
+                    <table class="table table-bordered table-responsive-md table-striped text-center" bgcolor="transparent" style="color: white">
+                        <thead style="color:black">
+                            <tr>
+                                <th class="text-center"><b>Name</b></th>
+                                <th class="text-center"><b>Email</b></th>
+                                <th class="text-center"><b>Gender</b></th>
+                                <th class="text-center"><b>Time Of Block</b></th>
+                                <th class="text-center"><b>Status</b></th>
+                                <th class="text-center"><b>Action</b></th>
+
+                            </tr>
+                        </thead>
+                        <tbody style="color:black">
+                            @foreach (Blocked_Seller c in Model)
+                            {
+                                <tr>
+                                    <td class="pt-3-half" contenteditable="true">@c.Name</td>
+                                    <td class="pt-3-half" contenteditable="true">@c.Email</td>
+                                    <td class="pt-3-half" contenteditable="true">@c.Gender</td>
+                                    <td class="pt-3-half" contenteditable="true">@c.Date_time</td>
+                                    <td class="pt-3-half">
+                                        <i class="fa fa-ban fa-2x" aria-hidden="true" style="color: red"></i>
+                                    </td>
+                                    <td>
+                                        <span class="table-remove">
+                                            <a class="btn btn-success btn-rounded btn-sm my-0" href="../Admin/UnBlock_A_Seller?ID=@c.SellerID">UnBlock</a>
+                                        </span>
+                                    </td>
+                                </tr>
+                            }
+                            <!-- This is our clonable table line -->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Editable table -->
+    </div>
+
+</body>
+
+</html>
+

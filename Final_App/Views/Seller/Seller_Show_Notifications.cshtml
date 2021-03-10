@@ -1,0 +1,146 @@
+﻿@{
+    Layout = null;
+}
+@using Final_App.Models;
+@model List<Notification>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+     <style>
+            body, html {
+                height: 100%;
+            }
+
+            .bg {
+                /* The image used */
+                background-image: url("https://newevolutiondesigns.com/images/freebies/nature-hd-background-9.jpg");
+                /* Full height */
+                height: 100%;
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
+</head>
+<body>
+
+    <!----   <a class="nav-link" href="../Home/homepage">Features</a>-->
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="../Seller/Seller_Home">BuySalePoint.com</a>
+
+
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+
+                <!-- Dropdown -->
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Home">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Profile">My Profile</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Show_Products">My Products</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Show_Orders">All Orders</a>
+                </li>
+                 <li class="nav-item active">
+                    <a class="nav-link" href="../Seller/Seller_Show_Notifications">All Notifications</a>
+                </li>
+            </ul>
+
+
+        </div>
+        <!--/.Sign Out-->
+        <form method="get" action="../Seller/Seller_Login">
+            <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Sign out</button>
+        </form>
+
+    </nav>
+
+    <!--/.Navbar-->
+
+    <div class="bg">
+
+       
+
+        <br>
+        <!--Cust-->
+        <div class="container " style="text-align:center;">
+            <div class="card ">
+                <h3 style="color:white;text-align:left;" class="card-header blue f font-weight-bold text-uppercase py-4">Notifications</h3>
+                <div class="card-body">
+                    <div id="table" class="table-editable ">
+                        <table class=" table table-bordered font-weight-bold table-responsive-md table-striped text-center" style="color:black;">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"><b>ID</b></th>
+                                    <th class="text-center"><b>Title</b></th>
+                                    <th class="text-center"><b>Description</b></th>
+                                    <th class="text-center"><b>Date</b></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Notification p in Model)
+                                {
+                                    <tr>
+                                        <td id="1" value=@p.ID class="font-weight-bold pt-3-half" contenteditable="true">@p.ID</td>
+                                        <td id="2" value=@p.Title class="font-weight-bold pt-3-half" contenteditable="true">@p.Title</td>
+                                        <td id="3" value=@p.Description class="font-weight-bold pt-3-half" contenteditable="true">@p.Description</td>
+                                        <td id="4" value=@p.Time_Date class="font-weight-bold pt-3-half" contenteditable="true">@p.Time_Date</td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>

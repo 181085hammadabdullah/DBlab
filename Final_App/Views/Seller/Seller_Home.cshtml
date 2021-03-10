@@ -1,0 +1,180 @@
+﻿@model string
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Page Title</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+
+
+
+
+
+</head>
+<body>
+
+    <!----   <a class="nav-link" href="../Home/homepage">Features</a>-->
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="../Seller/Seller_Home">BuySalePoint.com</a>
+
+
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+
+
+
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="../Seller/Seller_Home">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Profile">My Profile</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Show_Products">My Products</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Show_Orders">All Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Show_Notifications">All Notifications</a>
+                </li>
+
+
+            </ul>
+
+
+        </div>
+
+        <!--/.Sign Out-->
+        <form method="get" action="../Seller/Seller_Login">
+            <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Sign out</button>
+        </form>
+
+
+    </nav>
+    <!--/.Navbar-->
+
+
+
+
+
+    <style>
+
+        html,
+        body,
+        header,
+        .view {
+            height: 100%;
+        }
+
+
+        .top-nav-collapse {
+            background-color: #78909c !important;
+        }
+
+
+
+
+        h1 {
+            letter-spacing: 8px;
+        }
+
+        h5 {
+            letter-spacing: 3px;
+        }
+
+        .hr-light {
+            border-top: 3px solid #fff;
+            width: 80px;
+        }
+    </style>
+
+    <!-- Main navigation -->
+    <header>
+
+        <!-- Full Page Intro -->
+        <div class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url('https://newevolutiondesigns.com/images/freebies/nature-hd-background-9.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <!-- Mask & flexbox options-->
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+                <!-- Content -->
+                <div class="container">
+                    <!--Grid row-->
+                    
+                    <h5 class="text-uppercase mb-4 white-text wow fadeInDown" data-wow-delay="0.4s">
+                        <strong>
+                            <label>@Model</label>
+                        </strong>
+                    </h5>
+
+
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-md-12 mb-4 white-text text-center">
+                            <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown"
+                                data-wow-delay="0.3s">
+                                <strong>BuySalePoint.com</strong>
+                            </h1>
+                            <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
+                            <h5 class="text-uppercase mb-4 white-text wow fadeInDown" data-wow-delay="0.4s">
+                                <strong>
+                                    Seller Home
+                                </strong>
+                            </h5>
+                            <a class="btn btn-outline-white wow fadeInDown" href="../Seller/Seller_Add_Product" data-wow-delay="0.4s">Add Product</a>
+                            <a class="btn btn-outline-white wow fadeInDown" href="../Seller/Seller_Profile" data-wow-delay="0.4s">My Profile</a>
+                            <a class="btn btn-outline-white wow fadeInDown" href="../Seller/Seller_Show_Notifications" data-wow-delay="0.4s">Notifications</a>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </div>
+                <!-- Content -->
+            </div>
+            <!-- Mask & flexbox options-->
+        </div>
+        <!-- Full Page Intro -->
+    </header>
+    <!-- Main navigation -->
+
+
+
+
+
+
+
+</body>
+</html>

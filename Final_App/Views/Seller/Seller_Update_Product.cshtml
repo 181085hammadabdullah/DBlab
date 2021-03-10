@@ -1,0 +1,428 @@
+﻿
+
+@{
+    Layout = null;
+}
+@using Final_App.Models;
+@model  CategoryWithProduct
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+</head>
+<body>
+
+    <!----   <a class="nav-link" href="../Home/homepage">Features</a>-->
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="../Seller/Seller_Home">BuySalePoint.com</a>
+
+
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+
+                <!-- Dropdown -->
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Home">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Profile">My Profile</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="../Seller/Seller_Show_Products">My Products</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Show_Orders">All Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Seller/Seller_Show_Notifications">All Notifications</a>
+                </li>
+            </ul>
+
+
+        </div>
+        <!--/.Sign Out-->
+        <form method="get" action="../Seller/Seller_Login">
+            <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" type="submit">Sign out</button>
+        </form>
+
+    </nav>
+    <!--/.Navbar-->
+
+    <div class="bg">
+
+        <style>
+            body, html {
+                height: 100%;
+            }
+
+            .bg {
+                /* The image used */
+                background-image: url("https://newevolutiondesigns.com/images/freebies/nature-hd-background-9.jpg");
+                /* Full height */
+                height: 100%;
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
+
+
+
+
+        <br><br><br>
+        <div class="container col-lg-5 col-md-6" style="text-align:center">
+
+            <div class="card">
+
+                <h5 class="card-header info-color white-text text-center py-4">
+                    <strong>Product Details</strong>
+                </h5>
+
+                <!--Card content-->
+                <div class="card-body px-lg-5 pt-0">
+
+                    <!-- Form -->
+                    <form class="text-center" style="color: #757575;" action=" ../Seller/Update_Seller_Product" onsubmit="return UpdateProductValidation()" method="post">
+                        @*<label for="select">Category</label>
+                            <select class="browser-default custom-select mb-4" id="select">
+                                <option value="" disabled="" selected="">Choose your option</option>
+                                <option value="1">Property</option>
+                                <option value="2">Home Equipment</option>
+                                <option value="3">Furniture</option>
+                                <option value="4">Books and Stationary</option>
+                                <option value="5">Student Accessories</option>
+                                <option value="6">Clothes</option>
+                                <option value="7">Shoes</option>
+                                <option value="8">Children Toys and Accessories</option>
+                                <option value="9">Computer Equipment</option>
+                                <option value="10">Computer Hardware and Software</option>
+                                <option value="11">Mobile and Tablets</option>
+                                <option value="12">Laptops and Desktops PC’s</option>
+                                <option value="13">Digital Camera and DSLR</option>
+                                <option value="14">Camera Accessories</option>
+                                <option value="15">Sports</option>
+                                <option value="16">Motorcycles and Cycles</option>
+                                <option value="17">Cars and Heavy Vehicles</option>
+                                <option value="18">Spare Parts of Vehicles</option>
+                            </select>*@
+
+
+
+
+
+                        <div class="form-row " style="margin:2%">
+                            <div class="col">
+                                <br>
+                                <select class="font-weight-bold browser-default custom-select mb-4" id="category_id" name="category_id">
+                                    <option value="@Model.product.CategoryID" class="font-weight-bold" disabled="" selected="@Model.product.CategoryID">Choose Category</option>
+                                    @foreach (Category p in Model.Categories)
+                                    {
+                                        <option value="@p.CategoryID">@p.Name</option>
+                                    }
+                                </select>
+                                <p id="e8"></p>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="form-row">
+                            <div class="col">
+                                <!--Product ID-->
+                                <div class="md-form">
+                                    <input type="text" id="FormProductID" name="FormProductID" value=" @Model.product.ProductID" class="form-control" readonly>
+                                    <label for="FormProductID">Product ID</label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col">
+                                <!--Product Name-->
+                                <div class="md-form">
+                                    <input type="text" id="FormProductName" name="FormProductName" value=" @Model.product.Product_Name" class="form-control">
+                                    <label for="FormProductName">Product Name</label>
+                                    <p id="e1"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col">
+                                <!-- stock -->
+                                <div class="md-form">
+                                    <input type="number" id="FormStock" name="FormStock" class="form-control text-center" value=" @Model.product.Stock">
+                                    <label for="FormStock">Stock</label>
+                                    <p id="e2"></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <!--  unit price -->
+                                <div class="md-form">
+                                    <input type="number" id="FormPrice" name="FormPrice" value=" @Model.product.Unit_price" class="form-control">
+                                    <label for="FormPrice">Price</label>
+                                    <p id="e3"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col">
+                                <!-- Manufacturer -->
+                                <div class="md-form">
+                                    <input type="text" id="FormManufacturer" name="FormManufacturer" value=" @Model.product.Manufacturer" class="form-control text-center">
+                                    <label for="FormManufacturer">Manufacturer</label>
+                                    <p id="e4"></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <!--  Model -->
+                                <div class="md-form">
+                                    <input type="number" id="FormModel" name="FormModel" value=" @Model.product.Model" class="form-control" value="2020">
+                                    <label for="FormModel">Model</label>
+                                    <p id="e5"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col">
+                                <!-- City -->
+                                <div class="md-form">
+                                    <input type="text" id="FormCity" name="FormCity" value=" @Model.product.City" class="form-control text-center">
+                                    <label for="FormCity">City</label>
+                                    <p id="e6"></p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- button -->
+                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Update Product</button>
+
+
+
+                        <hr>
+
+                        <!-- Terms of service -->
+                        <p>
+
+                            <a href="" target="_blank">terms of service</a>
+                    </form>
+                    <!-- Form -->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    $(document).ready(function () {
+        $('select option[value="@Model.product.CategoryID"]').attr("selected", true);
+
+    })
+
+    function UpdateProductValidation() {
+
+        var check = true;
+
+        var name = document.getElementById('FormProductName').value;
+
+        var stock = document.getElementById('FormStock').value;
+
+        var price = document.getElementById('FormPrice').value;
+
+        var manufacturer = document.getElementById('FormManufacturer').value;
+
+        var model = document.getElementById('FormModel').value;
+
+        var city = document.getElementById('FormCity').value;
+
+        var category_id = document.getElementById('category_id').value;
+
+        var errName1 = $("#e1");
+        var errName2 = $("#e2");
+        var errName3 = $("#e3");
+        var errName4 = $("#e4");
+        var errName5 = $("#e5");
+        var errName6 = $("#e6");;
+        var errName8 = $("#e8");
+
+
+
+        errName1.addClass('small');
+        errName2.addClass('small');
+        errName3.addClass('small');
+        errName4.addClass('small');
+        errName5.addClass('small');
+        errName6.addClass('small');
+        errName8.addClass('small');
+        $("#e1").css("color", "red");
+        $("#e2").css("color", "red");
+        $("#e3").css("color", "red");
+        $("#e4").css("color", "red");
+        $("#e5").css("color", "red");
+        $("#e6").css("color", "red");
+        $("#e8").css("color", "red");
+
+        //Name Validation
+        if (name == "") {
+            document.getElementById("FormProductName").style.borderColor = "red";
+            errName1.html("* Name Required");
+            check = false;
+
+        }
+        else if (name.length < 3) {
+            document.getElementById("FormProductName").style.borderColor = "red";
+            errName1.html("* Min 3 Characters");
+            check = false;
+        }
+        else {
+            errName1.html("");
+            document.getElementById("FormProductName").style.borderColor = "green";
+        }
+
+        //Stock Validations
+        if (stock == "") {
+            document.getElementById("FormStock").style.borderColor = "red";
+            errName2.html("* Stock Required");
+            check = false;
+        }
+        else if (stock < 1) {
+            document.getElementById("FormStock").style.borderColor = "red";
+            errName2.html("* Stock cannot be less than 1");
+            check = false;
+        }
+        else {
+            errName2.html("");
+            document.getElementById("FormStock").style.borderColor = "green";
+        }
+        //Price Validations
+        if (price == "") {
+            document.getElementById("FormPrice").style.borderColor = "red";
+            errName3.html("* Price Required");
+            check = false;
+        }
+        else if (price < 0) {
+            document.getElementById("FormPrice").style.borderColor = "red";
+            errName3.html("* Price cannot be negitive");
+            check = false;
+        }
+        else {
+            errName3.html("");
+            document.getElementById("FormPrice").style.borderColor = "green";
+        }
+        //Manufacturer Validations
+        if (manufacturer == "") {
+            document.getElementById("FormManufacturer").style.borderColor = "red";
+            errName4.html("* manufacturer Required");
+            check = false;
+        }
+        else if (manufacturer.length < 3) {
+            document.getElementById("FormManufacturer").style.borderColor = "red";
+            errName4.html("* Min 3 Characters");
+            check = false;
+        }
+        else {
+            errName4.html("");
+            document.getElementById("FormManufacturer").style.borderColor = "green";
+        }
+
+        //Model Validations
+        if (model == "") {
+            document.getElementById("FormModel").style.borderColor = "red";
+            errName5.html("* Model Required");
+            check = false;
+        }
+        else if (model < 1980) {
+            document.getElementById("FormModel").style.borderColor = "red";
+            errName5.html("* Model should be equal or above 1980");
+            check = false;
+        }
+        else if (model > 2020) {
+            document.getElementById("FormModel").style.borderColor = "red";
+            errName5.html("* Model cannot be greater than 2020");
+            check = false;
+        }
+        else {
+            errName5.html("");
+            document.getElementById("FormModel").style.borderColor = "green";
+        }
+
+
+
+        //City Validations
+        if (city == "") {
+            document.getElementById("FormCity").style.borderColor = "red";
+            errName6.html("* City Required");
+            check = false;
+        }
+        else {
+            errName6.html("");
+            document.getElementById("FormCity").style.borderColor = "green";
+        }
+
+        //Category Validation
+        if (category_id == "") {
+            document.getElementById("category_id").style.borderColor = "red";
+            errName8.html("* Category Required");
+            check = false;
+        }
+        else {
+            errName8.html("");
+            document.getElementById("category_id").style.borderColor = "green";
+        }
+
+
+
+        if (check == false)
+            return false;
+        else
+            return true;
+
+    }
+
+</script>

@@ -1,0 +1,462 @@
+﻿@using Final_App.Models
+@model Admin
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    <!--Navbar -->
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange sticky-top lighten-1">
+        <a class="navbar-brand" href="#">Admin Module</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+            aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../Admin/AdminHome">Home
+          <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Admin/AdminProfile">Profile</a>
+                </li>
+                
+
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-google-plus-g"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                        aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="../Admin/Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/.Navbar -->
+    <div class="container col-lg-4 col-md-4" style="text-align: center">
+        <button type="button" class="btn btn-danger">
+
+            <h2><b>Admin Profile</b></h2>
+        </button>
+        <!-- Material form register -->
+        <div class="card">
+
+            <h5 class="card-header info-color white-text text-center py-4">
+                <strong>Admin Profile</strong>
+            </h5>
+
+            <!--Card content-->
+            <div class="card-body px-lg-5 pt-0">
+
+                <!-- Form -->
+                <form class="text-center" method="post" style="color: #757575;" onsubmit="return ProfileFormValidation()" action="../Admin/Admin_Update_Profile">
+
+                    <div class="form-row">
+                        <div class="col">
+                            <!-- First name -->
+                            <div class="md-form">
+                                <input type="text" id="materialRegisterFormFirstName" name="First_Name" value="@Model.First_Name" class="form-control">
+                                <label for="materialRegisterFormFirstName">First name</label>
+                            </div>
+                            <p id="e1"></p>
+                        </div>
+                        <div class="col">
+                            <!-- Last name -->
+                            <div class="md-form">
+                                <input type="text" id="materialRegisterFormLastName" name="Last_Name" value="@Model.Last_Name" class="form-control">
+                                <label for="materialRegisterFormLastName">Last name</label>
+                            </div>
+                            <p id="e2"></p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <!-- First name -->
+                            <div class="md-form">
+                                <a><i id="pass-status1" aria-hidden="true" style="margin-left: 120px"></i></a>
+
+                                <input type="email" id="materialRegisterFormEmail" name="new_email" value="@Model.email" class="form-control" readonly>
+                                <label for="materialRegisterFormEmail">Email</label>
+                            </div>
+                            <p id="e3"></p>
+                        </div>
+                        <div class="col">
+                            <!-- Last name -->
+                            <div class="md-form" id="passwordshow">
+                                <a><i id="pass-status" class="fa fa-eye-slash" aria-hidden="true" style="margin-left: 120px"></i></a>
+                                <input type="password" id="materialRegisterFormPassword" name="new_Password" value="@Model.Password" class="form-control">
+
+                                <label for="materialRegisterFormPassword">Password</label>
+                            </div>
+                            <p id="e4"></p>
+                        </div>
+                    </div>
+
+                    <!-- Phone number -->
+                    <div class="form-row">
+                        <div class="col">
+                            <!-- First name -->
+                            <div class="md-form">
+                                <input type="text" id="materialRegisterFormPhone" name="phone" value="@Model.Phone" class="form-control">
+                                <label for="materialRegisterFormPhone">Phone No</label>
+                            </div>
+                            <p id="e5"></p>
+                        </div>
+                        <div class="col">
+                            <!-- Last name -->
+                            <div class="md-form">
+                                <input type="text" id="materialRegisterFormCNIC" name="cnic" value="@Model.CNIC" class="form-control">
+                                <label for="materialRegisterFormCNIC">CNIC</label>
+                            </div>
+                            <p id="e6"></p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <!-- First name -->
+                            <!-- Basic dropdown -->
+                            <!-- Material inline 1 -->
+                            <label class="form-check-label" for="materialInline1"><b>Gender</b></label>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" value="Male" class="form-check-input" id="materialInline1" name="Gender">
+                                <label class="form-check-label" for="materialInline1">Male</label>
+                            </div>
+
+                            <!-- Material inline 2 -->
+                            <div class="form-check form-check-inline">
+                                <input type="radio" value="Female" class="form-check-input" id="materialInline2" name="Gender">
+                                <label class="form-check-label" for="materialInline2">Female</label>
+                            </div>
+
+                            <p id="e7"></p>
+                            <!-- Material inline 3 -->
+
+                            <!-- Basic dropdown -->
+                        </div>
+                        <div class="col">
+                            <!-- Last name -->
+                            <div class="md-form">
+                                <input type="text" id="materialRegisterFormQualfication" name="Qualification" value="@Model.Qualfication" class="form-control">
+                                <label for="materialRegisterFormQualfication">Qualfication</label>
+                            </div>
+                            <p id="e8"></p>
+                        </div>
+                    </div>
+                    <div class="md-form">
+                        <textarea id="form7" class="md-textarea form-control" name="Address" rows="3">@Model.Address</textarea>
+
+                        <label for="form7">
+                            Address
+                        </label>
+                    </div>
+                    <p id="e9"></p>
+
+
+                    <div class="md-form">
+                        <input  type="date" id="example" value="@Model.DOB" class="form-control" name="DOB">
+                         <label for="example">DOB</label>
+                    </div>
+                    <!-- Sign up button -->
+                    <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Update</button>
+
+                    <!-- Social register -->
+
+
+                    <a type="button" class="btn-floating btn-fb btn-sm">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a type="button" class="btn-floating btn-tw btn-sm">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a type="button" class="btn-floating btn-li btn-sm">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a type="button" class="btn-floating btn-git btn-sm">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <hr>
+
+                    <!-- Terms of service -->
+                    <p>
+
+                        <a href="" target="_blank">terms of service</a>
+                </form>
+                <!-- Form -->
+
+            </div>
+
+        </div>
+        <!-- Material form register -->
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+            document.getElementById("example").defaultValue = "@Model.DOB";
+            if ("@Model.Gender" == "Male") {
+                $("#materialInline1").prop("checked", true);
+
+            }
+            else {
+                $("#materialInline2").prop("checked", true);
+            }
+        });
+        $(document).ready(function () {
+            $("#passwordshow a").on('click', function (event) {
+
+                event.preventDefault();
+                var passStatus = document.getElementById('pass-status');
+                var x = document.getElementById("materialRegisterFormPassword");
+
+                if (x.type === "password") {
+                    x.type = "text";
+                    passStatus.className = 'fa fa-eye';
+
+                } else {
+                    x.type = "password";
+                    passStatus.className = 'fa fa-eye-slash';
+                }
+
+            });
+        });
+
+        function ProfileFormValidation() {
+
+            var check = true;
+            var re = /^(([^<>()\[\]\\.,;:\s"]+(\.[^<>()\[\]\\.,;:\s"]+)*)|(".+"))((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var email = document.getElementById('materialRegisterFormEmail').value;
+
+            var password = document.getElementById('materialRegisterFormPassword').value;
+
+            var fname = document.getElementById('materialRegisterFormFirstName').value;
+
+            var lname = document.getElementById('materialRegisterFormLastName').value;
+
+            var phone = document.getElementById('materialRegisterFormPhone').value;
+
+            var cnic = document.getElementById('materialRegisterFormCNIC').value;
+
+            var Qualfication = document.getElementById('materialRegisterFormQualfication').value;
+
+            //var male = docoment.getElementById('materialInline1');
+            //var female = docoment.getElementById('materialInline2');
+            var address = document.getElementById('form7').value;
+
+            var errName1 = $("#e1");
+            var errName2 = $("#e2");
+            var errName3 = $("#e3");
+            var errName4 = $("#e4");
+            var errName5 = $("#e5");
+            var errName6 = $("#e6");
+            var errName7 = $("#e7");
+            var errName8 = $("#e8");
+            var errName9 = $("#e9");
+
+
+            errName1.addClass('small');
+            errName2.addClass('small');
+            errName3.addClass('small');
+            errName4.addClass('small');
+            errName5.addClass('small');
+            errName6.addClass('small');
+            errName7.addClass('small');
+            errName8.addClass('small');
+            errName9.addClass('small');
+            $("#e1").css("color", "red");
+            $("#e2").css("color", "red");
+            $("#e3").css("color", "red");
+            $("#e4").css("color", "red");
+            $("#e5").css("color", "red");
+            $("#e6").css("color", "red");
+            $("#e7").css("color", "red");
+            $("#e8").css("color", "red");
+            $("#e9").css("color", "red");
+
+            //FirstName Validations
+            if (fname == "") {
+                document.getElementById("materialRegisterFormFirstName").style.borderColor = "red";
+                errName1.html("* FirstName Required");
+                check = false;
+
+            }
+            else if (fname.length < 3) {
+                document.getElementById("materialRegisterFormFirstName").style.borderColor = "red";
+                errName1.html("* Min 3 Characters");
+                check = false;
+            }
+            else {
+                errName1.html("");
+                document.getElementById("materialRegisterFormFirstName").style.borderColor = "green";
+            }
+            //FirstName errors
+            if (lname == "") {
+                document.getElementById("materialRegisterFormLastName").style.borderColor = "red";
+                errName2.html("* LastName Required");
+                check = false;
+            }
+            else if (lname.length < 3) {
+                document.getElementById("materialRegisterFormLastName").style.borderColor = "red";
+                errName2.html("* Min 3 Characters");
+                check = false;
+            }
+            else {
+                errName2.html("");
+                document.getElementById("materialRegisterFormLastName").style.borderColor = "green";
+            }
+
+            //Email Validations
+            if (email == "") {
+                document.getElementById("materialRegisterFormEmail").style.borderColor = "red";
+                errName3.html("* Email Required");
+                check = false;
+            }
+            else if (re.test(email) == false) {
+                document.getElementById("materialRegisterFormEmail").style.borderColor = "red";
+                errName3.html("* Invalid Email");
+                check = false;
+            }
+            else {
+                errName3.html("");
+                document.getElementById("materialRegisterFormEmail").style.borderColor = "green";
+            }
+            //Password Validations
+            if (password == "") {
+                document.getElementById("materialRegisterFormPassword").style.borderColor = "red";
+                errName4.html("* Password Required");
+                check = false;
+            }
+            else if (password.length < 6) {
+                document.getElementById("materialRegisterFormPassword").style.borderColor = "red";
+                errName4.html("* Password Must have minimum 6 Characters");
+                check = false;
+            }
+            else {
+                errName4.html("");
+                document.getElementById("materialRegisterFormPassword").style.borderColor = "green";
+            }
+            //Phone Validations
+            if (phone == "") {
+                document.getElementById("materialRegisterFormPhone").style.borderColor = "red";
+                errName5.html("* Password Required");
+                check = false;
+            }
+            else if (phone.length != 11) {
+                document.getElementById("materialRegisterFormPhone").style.borderColor = "red";
+                errName5.html("* PhoneNo Must have 11 digits");
+                check = false;
+            }
+            else {
+                errName5.html("");
+                document.getElementById("materialRegisterFormPhone").style.borderColor = "green";
+            }
+
+
+            //CNIC Validations
+            if (cnic == "") {
+                document.getElementById("materialRegisterFormCNIC").style.borderColor = "red";
+                errName6.html("* CNIC Required");
+                check = false;
+            }
+            else if (cnic.length != 15) {
+                document.getElementById("materialRegisterFormCNIC").style.borderColor = "red";
+                errName6.html("* CNIC Must have 15 digts");
+                check = false;
+            }
+            else {
+                errName6.html("");
+                document.getElementById("materialRegisterFormCNIC").style.borderColor = "green";
+            }
+            //Gender Validations
+            if (document.getElementById('materialInline1').checked || document.getElementById('materialInline2').checked) {
+                errName7.html("");
+            }
+            else {
+                errName7.html("* Gender Required");
+                check = false;
+            }
+            //Qualification Validations
+            if (Qualfication == "") {
+                document.getElementById("materialRegisterFormQualfication").style.borderColor = "red";
+                errName8.html("* Qualification Required");
+                check = false;
+            }
+
+            else {
+                errName8.html("");
+                document.getElementById("materialRegisterFormQualfication").style.borderColor = "green";
+            }
+
+
+
+            //Address Validations
+            if (address == "") {
+                document.getElementById("form7").style.borderColor = "red";
+                errName9.html("* Address Required");
+                check = false;
+            }
+
+            else if (address.length < 10) {
+                document.getElementById("form7").style.borderColor = "red";
+                errName9.html("* Plz Enter Valid Address Contains Complete Info");
+                check = false;
+            }
+            else {
+                errName9.html("");
+                document.getElementById("form7").style.borderColor = "green";
+            }
+            if (check == false)
+                return false;
+            else
+                return true;
+
+        }
+    </script>
+</body>
+</html>
+

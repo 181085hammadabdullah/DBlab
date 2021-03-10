@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+@using Final_App.Models
+@model List<Invoice_Admin>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+        body, html {
+            height: auto;
+            margin: 0;
+        }
+
+        .bg { /* The image used */
+            background-image: url("https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"); /* Full height */
+            height: 100%; /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .nav {
+            margin-bottom: 0 !important;
+            border: 0 !important;
+        }
+
+        .open-button {
+            background-color: #555;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            position: fixed;
+            bottom: 23px;
+            right: 28px;
+            width: 280px;
+        }
+
+        /* The popup form - hidden by default */
+        .form-popup {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
+
+        /* Add styles to the form container */
+        .form-container {
+            max-width: 300px;
+            padding: 10px;
+            background-color: white;
+        }
+
+            /* Full-width input fields */
+            .form-container input[type=text], .form-container input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                border: none;
+                background: #f1f1f1;
+            }
+
+                /* When the inputs get focus, do something */
+                .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+                    background-color: #ddd;
+                    outline: none;
+                }
+
+            /* Set a style for the submit/login button */
+            .form-container .btn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                margin-bottom: 10px;
+                opacity: 0.8;
+            }
+
+            /* Add a red background color to the cancel button */
+            .form-container .cancel {
+                background-color: red;
+            }
+
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
+                opacity: 1;
+            }
+    </style>
+</head>
+<body>
+    <!--Navbar -->
+       <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange sticky-top lighten-1">
+        <a class="navbar-brand" href="#">Admin Module</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+            aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../Admin/AdminHome">Home
+          <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Admin/AdminProfile">Profile</a>
+                </li>
+                
+
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light">
+                        <i class="fab fa-google-plus-g"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                        aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="../Admin/Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/.Navbar -->
+    <div class="bg">
+        <br>
+        <div class="container">
+            <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Your Invoices are as follows </h3>
+        </div>
+        <br>
+        @foreach (Invoice_Admin v in Model)
+        {
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Invoice:</strong>
+                        @v.invoiceno &nbsp;&nbsp;
+
+                        <span class="float-right" style="display: inline;"><strong>Status:</strong> Paid</span>
+                        <span class="float-right" style="display: inline;"><strong>Date: </strong>@v.date</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-sm-6">
+                                <h6 class="mb-3">From:</h6>
+                                <div>
+                                    <strong>Buy-Sell Point</strong>
+                                </div>
+                                <div>Abstergo 8</div>
+                                <div>71-101 neverland, eutopia</div>
+                                <div>Email: info@buysellpoint.com</div>
+                                <div>Phone: +48 444 666 3333</div>
+                            </div>
+                            <div class="col-sm-6">
+                                <h6 class="mb-3">To:</h6>
+                                <div>
+                                    <strong>@v.Email</strong>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--to from above-->
+                        <div class="table-responsive-sm">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="center">#</th>
+                                        <th>Item</th>
+                                        <th>Description</th>
+                                        <th class="right">Unit Cost(RS)</th>
+                                        <th class="center">Qty</th>
+                                        <th class="right">Sub-Total</th>
+                                    </tr>
+                                </thead>
+                                @foreach (Invoice_Product p in v.products)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td class="center">@p.num</td>
+                                            <td class="left strong">@p.product_name</td>
+                                            <td class="left">@p.description</td>
+                                            <td class="right">@p.unit_price</td>
+                                            <td class="center">@p.quantity</td>
+                                            <td class="right">@p.sub_total</td>
+                                        </tr>
+                                    </tbody>
+                                }
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4" class="hidden-xs"></td>
+                                        <td class="hidden-xs">Total(RS):</td>
+                                        <td class="hidden-xs left" id="gt">@v.grand_total</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        }
+
+    </div>
+
+</body>
+</html>
+
+

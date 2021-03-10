@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+@using Final_App.Models
+@model List<Invoice>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/js/mdb.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+        body, html {
+            height: auto;
+            margin: 0;
+        }
+
+        .bg { /* The image used */
+            background-image: url("https://images.pexels.com/photos/35550/ipad-tablet-technology-touch.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"); /* Full height */
+            height: 100%; /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .nav {
+            margin-bottom: 0 !important;
+            border: 0 !important;
+        }
+
+        .open-button {
+            background-color: #555;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            position: fixed;
+            bottom: 23px;
+            right: 28px;
+            width: 280px;
+        }
+
+        /* The popup form - hidden by default */
+        .form-popup {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
+
+        /* Add styles to the form container */
+        .form-container {
+            max-width: 300px;
+            padding: 10px;
+            background-color: white;
+        }
+
+            /* Full-width input fields */
+            .form-container input[type=text], .form-container input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                border: none;
+                background: #f1f1f1;
+            }
+
+                /* When the inputs get focus, do something */
+                .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+                    background-color: #ddd;
+                    outline: none;
+                }
+
+            /* Set a style for the submit/login button */
+            .form-container .btn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                margin-bottom: 10px;
+                opacity: 0.8;
+            }
+
+            /* Add a red background color to the cancel button */
+            .form-container .cancel {
+                background-color: red;
+            }
+
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
+                opacity: 1;
+            }
+    </style>
+</head>
+<body>
+    <!--Navbar -->
+     <nav class="mb-1 nav navbar navbar-expand-lg navbar-dark blue lighten-1">
+        <a class="navbar-brand font-weight-bold" href="../Customer/CustHome">Customer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+            aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link font-weight-bold" href="../Customer/CustHome">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="../Customer/CustProfile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="../Customer/AddToCart">Cart</a>
+                </li>
+                <li class="nav-item font-weight-bold">
+                    <a class="nav-link" href="../Customer/CustStore">Your Store</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item avatar dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user fa-2x"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+                         aria-labelledby="navbarDropdownMenuLink-55">
+                        <a style="background-color: lightgray;margin:0;" class="text-center dropdown-item" href="../Customer/CustLogin">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--/.Navbar -->
+    <div class="bg">
+        <br>
+        <div class="container">
+            <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Your Invoices are as follows </h3>
+        </div>
+        <br>
+        @foreach (Invoice v in Model)
+        {
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Invoice:</strong>
+                        @v.date &nbsp;&nbsp;
+                        <a onclick="openForm(@v.invoiceno);" class="font-weight-bold" style="color:blue;text-decoration:underline;">click here to give feed-back</a>
+                        <span class="float-right" style="display: inline;"><strong>Status: </strong> Paid</span><br>
+                        <span class="float-right" style="display: inline;"><strong>Payment Method: </strong>@v.payment</span>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-sm-6">
+                                <h6 class="mb-3">From:</h6>
+                                <div>
+                                    <strong>Buy-Sell Point</strong>
+                                </div>
+                                <div>Abstergo 8</div>
+                                <div>71-101 neverland, eutopia</div>
+                                <div>Email: info@buysellpoint.com</div>
+                                <div>Phone: +48 444 666 3333</div>
+                            </div>
+                            <div class="col-sm-6">
+                                <h6 class="mb-3">To:</h6>
+                                <div>
+                                    <strong>@v.customer.Fname</strong>
+                                    <strong>@v.customer.Lname</strong>
+                                </div>
+                                <div>@v.customer.address</div>
+                                <div>@v.customer.city</div>
+                                <div>@v.customer.email</div>
+                                <div>@v.customer.phone</div>
+                            </div>
+                        </div>
+                        <!--to from above-->
+                        <div class="table-responsive-sm">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="center">#</th>
+                                        <th>Item</th>
+                                        <th>Description</th>
+                                        <th class="right">Unit Cost(RS)</th>
+                                        <th class="center">Qty</th>
+                                        <th class="right">Sub-Total</th>
+                                    </tr>
+                                </thead>
+                                @foreach (Invoice_Product p in v.products)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td class="center">@p.num</td>
+                                            <td class="left strong">@p.product_name</td>
+                                            <td class="left">@p.description</td>
+                                            <td class="right">@p.unit_price</td>
+                                            <td class="center">@p.quantity</td>
+                                            <td class="right">@p.sub_total</td>
+                                        </tr>
+                                    </tbody>
+                                }
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4" class="hidden-xs"></td>
+                                        <td class="hidden-xs">Total(RS):</td>
+                                        <td class="hidden-xs left" id="gt">@v.grand_total</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        }
+
+    </div>
+    <div class="form-popup" id="myForm">
+        <form class="form-container">
+            <h1 class="font-weight-bold">Feedback</h1>
+            <p class="font-weight-bold">
+                Only one feedback can be submitted for an invoice, subsequent feedbacks will not be entertained, thanks!
+            </p>
+            <input type="text" placeholder="Write here" id="feed" name="feed" required>
+            <button type="submit" data-toggle="modal" onclick="return xyz();" data-target="#myModal" class="btn">Proceed</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <br>
+                    <div class="thank-you-pop">
+                        <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" height="35" alt="">
+                        <p>Thank you for your time, feedback submitted successfully</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var a;
+        function openForm(invnum) {
+            a = invnum;
+            document.getElementById("myForm").style.display = "block";
+        }
+        function xyz() {
+           
+            var y = document.getElementById("feed").value;
+          
+            $.ajax(
+                {
+                    type: "POST", //HTTP POST Method
+                    url: "../Customer/Feedback", // Controller/View
+                   
+                    data:
+                    {
+                        invoice_num: a,
+                        feed: y
+                    }
+
+                });
+            closeForm();
+            return false;
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
+</body>
+</html>
+
+
